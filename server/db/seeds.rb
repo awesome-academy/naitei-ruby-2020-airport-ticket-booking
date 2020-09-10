@@ -1,10 +1,10 @@
-Staff.create!(full_name: "Nhat Quang",
-  user_name: "quangdvn",
+Staff.create(user_name: "staff1",
+  email: "staff1@system.com",
   password: "123456",
   is_admin: true)
 
-Staff.create!(full_name: "Quang Nhat",
-  user_name: "quangdvn99",
+Staff.create(user_name: "staff2",
+  email: "staff2@system.com",
   password: "123456",
   is_admin: false)
 
@@ -186,7 +186,7 @@ BookingStatus.create(name: "Pending")
 BookingStatus.create(name: "Success")
 
 def rand_booking_customer
-  booking_customer = rand(1..10)
+  booking_customer = rand(1..2)
   case booking_customer
   when 1
     rand(1..50)

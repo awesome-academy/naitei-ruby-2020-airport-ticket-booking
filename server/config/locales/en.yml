@@ -2,6 +2,11 @@ en:
   flights:
     error: "Invalid flight type!!"
     not_found: "Flights not found!!"
+    delete_success: "Flight delete success"
+    delete_fail: "Flight delete fail"
+    error_departure_day: "Invalid departure day"
+  planes:
+    not_found: "Plane not found!!"
   bookings:
     error: "An error occured while booking !!"
     none_bookings: "You haven't booked anything yet"
@@ -43,6 +48,17 @@ en:
       incorrect: "If your booking information is incorrect, please contact us at airport@example.com / tel: 0123456789 for support,"
       first_departure_day: "First Departure Day"
       second_departure_day: "Second Departure Day"
+  flight_mailer:
+    cancellation:
+      subject: "Flight cancellation"
+      title: "Flight Cancellation"
+      header: "Dear Customer"
+      first_line: "We've been reviewing our flight schedule and operation and have to announce that your flight on the "
+      plane: "plane"
+      departure: "departure at "
+      date: "on "
+      delay: "has to be delayed."
+      sorry: "We're sorry for any inconvenience or concern this caused. We will contact you as soon as possible."
   customers:
     invalid_token: "Invalid Token"
     unable_create: "Unable to create this Account"
@@ -51,3 +67,9 @@ en:
     not_found: "Account not found"
     incorrect_password: "Incorrect password"
     forbidden: "You can't do this action"
+  staffs:
+    invalid_token: "Invalid Token"
+    unavailable: "Unavailable Staff"
+    not_found: "Account not found"
+    incorrect_password: "Incorrect password"
+    forbidden: "You are not allowed to do this action"

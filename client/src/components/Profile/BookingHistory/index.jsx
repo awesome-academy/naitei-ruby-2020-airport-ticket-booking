@@ -46,7 +46,7 @@ const BookingHistory = () => {
       }
     };
     fetchData();
-  }, [doSubmit]);
+  }, [doSubmit, statusQuery, fromQuery, toQuery]);
 
   return (
     <Fragment>

@@ -2,6 +2,11 @@ vi:
   flights:
     error: "Loại chuyến bay không hợp lệ !!"
     not_found: "Không tìm thấy chuyến bay !!"
+    delete_success: "Xoá chuyển bay thành công"
+    delete_fail: "Xoá chuyển bay thất bại"
+    error_departure_day: "Ngày khởi hành không hợp lệ"
+  planes:
+    not_found: "Không tìm thấy máy báy!!"
   bookings:
     error: "Đã xảy ra lỗi khi đặt vé !!"
     none_bookings: "Bạn chưa đặt vé nào"
@@ -43,11 +48,28 @@ vi:
       incorrect: "Nếu thông tin đặt vé của bạn chưa chính xác, làm ơn liên lạc lại với chúng tôi tại airport@example.com / tel: 0123456789 để nhận được hỗ trợ."
       first_departure_day: "Ngày khởi hành thứ nhất"
       second_departure_day: "Ngày khởi hành thứ hai"
+  flight_mailer:
+    cancellation:
+      subject: "Thông báo huỷ chuyến bay"
+      title: "Thông báo huỷ chuyến bay"
+      header: "Chào quý khách thân mến"
+      first_line: "Chúng tôi đã đang kiểm tra lại lịch trình và vận hành các chuyến bay và phải thông báo rằng chuyến bay trên máy bay mang số hiệu"
+      plane: ""
+      departure: "khởi hành tại"
+      date: "vào lúc"
+      delay: "phải bị huỷ."
+      sorry: "Chúng tôi rất xin lỗi vì sự bất tiện này và sẽ liên lạc với bạn sớm nhất có thể."
   customers:
     invalid_token: "Token không tồn tại"
     unable_create: "Không thể tạo tài khoản này"
     unable_update: "Không thể cập nhật tài khoản này"
     unavailable: "Khách hàng không tồn tại"
+    not_found: "Tài khoản không tồn tại"
+    incorrect_password: "Mật khẩu sai"
+    forbidden: "Bạn không được phép thực hiện hành động này"
+  staffs:
+    invalid_token: "Token không tồn tại"
+    unavailable: "Tài khoản không tồn tại"
     not_found: "Tài khoản không tồn tại"
     incorrect_password: "Mật khẩu sai"
     forbidden: "Bạn không được phép thực hiện hành động này"

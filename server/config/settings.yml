@@ -5,6 +5,8 @@ flights:
   round_trip: 2
   max_seat: 100
   min_seat: 9
+  default_seat: 0
+  default_status: 1
 bookings:
   normal_class: "A"
   business_class: "B"

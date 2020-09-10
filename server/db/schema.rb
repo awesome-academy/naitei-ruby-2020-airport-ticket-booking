@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_031126) do
+ActiveRecord::Schema.define(version: 2020_09_08_083241) do
 
   create_table "airports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
@@ -161,12 +161,16 @@ ActiveRecord::Schema.define(version: 2020_09_04_031126) do
   end
 
   create_table "staffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
-    t.string "full_name"
     t.string "user_name"
-    t.string "password"
-    t.boolean "is_admin"
+    t.string "email"
+    t.boolean "is_admin", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_staffs_on_user_name", unique: true
   end
 

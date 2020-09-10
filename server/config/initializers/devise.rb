@@ -279,13 +279,15 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     manager.intercept_401 = false
-    manager.strategies.add :jwt, Devise::Strategies::JWT
-    manager.default_strategies(scope: :customer).unshift :jwt
+    manager.strategies.add :customer_jwt, Devise::Strategies::CustomerJWT
+    manager.strategies.add :staff_jwt, Devise::Strategies::StaffJWT
+    manager.default_strategies(scope: :customer).unshift :customer_jwt
+    manager.default_strategies(scope: :staff).unshift :staff_jwt
   end
 
   module Devise
     module Strategies
-      class JWT < Base
+      class CustomerJWT < Base
         def valid?
           request.headers["Authorization"].present?
         end
@@ -295,7 +297,7 @@ Devise.setup do |config|
 
           payload = JsonWebToken.decode auth_token
 
-          current_customer = Customer.find_by id: payload["id"]
+          current_customer = Customer.find_by id: payload["customer_id"]
 
           raise StandardError if current_customer.nil?
 
@@ -304,6 +306,28 @@ Devise.setup do |config|
           fail! I18n.t("customers.unavailable")
         rescue ::JWT::DecodeError
           fail! I18n.t("customers.invalid_token")
+        end
+      end
+
+      class StaffJWT < Base
+        def valid?
+          request.headers["Authorization"].present?
+        end
+
+        def authenticate!
+          auth_token = request.headers.fetch("Authorization", "").split(" ").last
+
+          payload = JsonWebToken.decode auth_token
+
+          current_staff = Staff.find_by id: payload["staff_id"]
+
+          raise StandardError if current_staff.nil?
+
+          success! current_staff
+        rescue StandardError
+          fail! I18n.t("staffs.unavailable")
+        rescue ::JWT::DecodeError
+          fail! I18n.t("staffs.invalid_token")
         end
       end
     end

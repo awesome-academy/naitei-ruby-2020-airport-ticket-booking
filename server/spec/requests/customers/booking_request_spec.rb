@@ -193,7 +193,7 @@ RSpec.describe "API V1 Customers Bookings", type: :request do
     context "with valid token" do
       before do
         post "/api/v1/customers/bookings", params: valid_params, as: :json
-        get "/api/v1/customers/bookings", headers: {Authorization: "Bearer #{JsonWebToken.encode id: user.id}"}
+        get "/api/v1/customers/bookings", headers: {Authorization: "Bearer #{JsonWebToken.encode customer_id: user.id}"}
       end
 
       it "should return success status" do

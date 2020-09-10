@@ -5,7 +5,7 @@ module Api::V1::Concerns
     extend ActiveSupport::Concern
 
     def flight_info_params
-      params.require(:flight).permit Flight::FLIGHTS_PARAMS
+      params.require(:flight).permit Flight::BOOKING_FLIGHTS_PARAMS
     end
 
     def search_one_way_flight
