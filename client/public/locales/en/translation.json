@@ -188,5 +188,38 @@
     "seatNumber": "Seat number",
     "status": "Status",
     "all": "All"
+  },
+  "manageFlights": {
+    "title": "Manage flights",
+    "departureDay": "Departure day",
+    "planeName": "Plane name",
+    "totalSeats": "Total seats",
+    "reservedSeats": "Reserved seats",
+    "fromTo": "From / To",
+    "from": "From",
+    "to": "To",
+    "departureTime": "Departure time",
+    "status": "Status",
+    "previous": "Previous",
+    "next": "Next",
+    "editFlight": "Edit flight info",
+    "addFlight": "Add flight",
+    "areYouSure": "Are you sure?",
+    "cancelFlight": "Cancel flight",
+    "cancel": "Cancel",
+    "chooseTime": "Choose time",
+    "chooseDestination": "Choose destination",
+    "choosePlane": "Choose plane"
+  },
+  "manageBookings": {
+    "title": "Manage bookings"
+  },
+  "staffPage": {
+    "manageBookings": "Manage bookings",
+    "manageFlights": "Manage flights"
+  },
+  "staffLogIn": {
+    "title": "Staff Log In",
+    "logIn": "Log In"
   }
 }

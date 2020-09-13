@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
   validates :payment_method_id, presence: true
   validates :seat_type_id, presence: true
 
-  delegate :plane, to: :flight
+  delegate :plane, :departure_day, :shift_id, to: :flight
   delegate :name, to: :seat_type, prefix: true
   delegate :name, to: :booking_status, prefix: true
   delegate :method_name, to: :payment_method
@@ -37,9 +37,16 @@ class Booking < ApplicationRecord
 
   ransack_alias :departure_location, :flight_flight_route_departure_location_sub_name
   ransack_alias :arrive_location, :flight_flight_route_arrive_location_sub_name
+  ransack_alias :departure_day, :flight_departure_day
+  ransack_alias :plane_id, :flight_plane_id
 
   before_create :increase_reserved_seat
   before_destroy :decrease_reserved_seat
+
+  scope :order_by_departure_day, ->{joins(:flight).order departure_day: :asc}
+  scope :order_by_shift, ->{joins(:flight).order shift_id: :asc}
+
+  paginates_per Settings.pagination.per_page
 
   def is_normal_seat?
     seat_type_id == Settings.bookings.normal_seat

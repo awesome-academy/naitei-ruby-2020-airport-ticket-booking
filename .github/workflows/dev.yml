@@ -24,8 +24,6 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Rubocop
         run: cd server && bundle exec rubocop -c .rubocop.yml
-      - name: Rails Best Practices
-        run: cd server && bundle exec rails_best_practices -e "db/schema.rb,db/migrate,vendor,app/models/application_record.rb"
       - name: Rspec
         run: |
               cd server

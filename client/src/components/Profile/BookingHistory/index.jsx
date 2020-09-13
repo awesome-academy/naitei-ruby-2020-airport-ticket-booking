@@ -8,15 +8,13 @@ import {
   FormGroup,
   Label,
   Input,
-  Button,
 } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { railsApi } from '../../../api/railsApi';
 import { reqConfig } from '../../../utils/requestConfig';
 import { notifyError } from '../../../services/alertService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import destination from '../../../constants/destination';
+import bookingStatus from '../../../constants/bookingStatus';
 import moment from 'moment';
 import './styles.scss';
 
@@ -26,7 +24,6 @@ const BookingHistory = () => {
   const [statusQuery, setStatusQuery] = useState('');
   const [fromQuery, setFromQuery] = useState('');
   const [toQuery, setToQuery] = useState('');
-  const [doSubmit, setDoSubmit] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +43,7 @@ const BookingHistory = () => {
       }
     };
     fetchData();
-  }, [doSubmit, statusQuery, fromQuery, toQuery]);
+  }, [statusQuery, fromQuery, toQuery]);
 
   return (
     <Fragment>
@@ -59,16 +56,15 @@ const BookingHistory = () => {
       <Form
         onSubmit={event => {
           event.preventDefault();
-          setDoSubmit(!doSubmit);
         }}
       >
-        <Row id="formRow">
-          <Col xs="11" id="formCol">
+        <Row className="filterRow">
+          <Col xs="12">
             <Row>
               <Col xs="4">
                 <FormGroup row>
                   <Label for="status">{t('bookingHistory.status')}:</Label>
-                  <Col sm="10">
+                  <Col sm="8">
                     <Input
                       value={statusQuery}
                       onChange={event => setStatusQuery(event.target.value)}
@@ -76,9 +72,12 @@ const BookingHistory = () => {
                       name="status"
                       id="status"
                     >
-                      <option value="">All</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Success">Success</option>
+                      <option value="">{t('bookingHistory.all')}</option>
+                      {bookingStatus.map(item => (
+                        <option key={item.id} value={item.status}>
+                          {item.status}
+                        </option>
+                      ))}
                     </Input>
                   </Col>
                 </FormGroup>
@@ -96,7 +95,7 @@ const BookingHistory = () => {
                     >
                       <option value="">{t('bookingHistory.all')}</option>
                       {destination.map(item => (
-                        <option value={item.subname}>{item.fullname}</option>
+                        <option key={item.id} value={item.subname}>{item.fullname}</option>
                       ))}
                     </Input>
                   </Col>
@@ -115,18 +114,13 @@ const BookingHistory = () => {
                     >
                       <option value="">{t('bookingHistory.all')}</option>
                       {destination.map(item => (
-                        <option value={item.subname}>{item.fullname}</option>
+                        <option key={item.id} value={item.subname}>{item.fullname}</option>
                       ))}
                     </Input>
                   </Col>
                 </FormGroup>
               </Col>
             </Row>
-          </Col>
-          <Col id="filter" xs="1">
-            <Button color="secondary">
-              <FontAwesomeIcon icon={faFilter} />
-            </Button>
           </Col>
         </Row>
       </Form>
@@ -162,7 +156,11 @@ const BookingHistory = () => {
               <td>
                 <Badge
                   color={
-                    item.booking_status === 'Pending' ? 'warning' : 'success'
+                    item.booking_status === 'Pending'
+                      ? 'warning'
+                      : item.booking_status === 'Cancelled'
+                      ? 'danger'
+                      : 'success'
                   }
                   pill
                 >

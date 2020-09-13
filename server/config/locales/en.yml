@@ -11,6 +11,7 @@ en:
     error: "An error occured while booking !!"
     none_bookings: "You haven't booked anything yet"
     not_inbound: "These flights are not inbound !!"
+    not_found: "Booking not found!!"
   booking_mailer:
     one_way_payment_confirmation:
       subject: "Payment information"
@@ -58,6 +59,16 @@ en:
       departure: "departure at "
       date: "on "
       delay: "has to be delayed."
+      sorry: "We're sorry for any inconvenience or concern this caused. We will contact you as soon as possible."
+    update:
+      subject: "Flight update"
+      title: "Flight Update"
+      header: "Dear Customer"
+      first_line: "We've been reviewing our flight schedule and operation and have to announce that your flight on the "
+      plane: "plane"
+      departure: "departure at "
+      date: "on "
+      delay: "has been updated."
       sorry: "We're sorry for any inconvenience or concern this caused. We will contact you as soon as possible."
   customers:
     invalid_token: "Invalid Token"

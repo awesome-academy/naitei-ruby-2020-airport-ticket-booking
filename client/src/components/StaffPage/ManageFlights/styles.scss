@@ -1,0 +1,15 @@
+.actions {
+  display: flex;
+  button {
+    margin: 0 0.1em;
+  }
+}
+
+.pagination {
+  .prev {
+    margin-right: 0.8em;
+  }
+  .next {
+    margin-left: 0.8em;
+  }
+}

@@ -1,11 +1,13 @@
 class Api::V1::Staffs::FlightsController < ApiController
   before_action :authenticate_staff!
-  before_action :require_admin, only: %i(create update)
+  before_action :require_admin, only: %i(create update destroy)
   before_action :find_flight, only: %i(update destroy)
 
   def index
     if params[:page]
-      @flights = Flight.order_by_departure_day.page params[:page]
+      query = search_params
+      @flights = Flight.ransack(query).result(distinct: true)
+                       .order_by_departure_day.order_by_shift.page params[:page]
       @type = "page"
     else
       @flights = Flight.order_by_departure_day
@@ -24,7 +26,10 @@ class Api::V1::Staffs::FlightsController < ApiController
   end
 
   def update
+    @customer_emails = get_customer_emails @flight.id
+
     if @flight.update update_flight_info_params
+      FlightMailer.update(@customer_emails, @flight).deliver_now
       render json: {success: true, data: @flight}, status: :ok
     else
       validation_errors = @flight.errors.full_messages
@@ -36,7 +41,7 @@ class Api::V1::Staffs::FlightsController < ApiController
   def destroy
     @customer_emails = get_customer_emails @flight.id
 
-    if @flight.destroy
+    if @flight.update flight_status_id: Settings.flight_status.cancelled
       FlightMailer.cancellation(@customer_emails, @flight).deliver_now
       render json: {success: true, message: I18n.t("flights.delete_success")}, status: :ok
     else
@@ -70,5 +75,15 @@ class Api::V1::Staffs::FlightsController < ApiController
   def get_customer_emails flight_id
     bookings = Booking.ransack({flight_id_eq: flight_id, customer_id_not_null: true}).result
     bookings.map{|b| b.customer.email}
+  end
+
+  def search_params
+    Hash.new.tap do |q|
+      q[:flight_status_id_eq] = params[:flight_status_id].presence
+      q[:plane_id_eq] = params[:plane_id].presence
+      q[:departure_day_eq] = params[:departure_day].presence
+      q[:departure_location_eq] = params[:from].presence
+      q[:arrive_location_eq] = params[:to].presence
+    end
   end
 end

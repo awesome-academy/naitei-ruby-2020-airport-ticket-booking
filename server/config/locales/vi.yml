@@ -6,11 +6,12 @@ vi:
     delete_fail: "Xoá chuyển bay thất bại"
     error_departure_day: "Ngày khởi hành không hợp lệ"
   planes:
-    not_found: "Không tìm thấy máy báy!!"
+    not_found: "Không tìm thấy máy bay!!"
   bookings:
     error: "Đã xảy ra lỗi khi đặt vé !!"
     none_bookings: "Bạn chưa đặt vé nào"
     not_inbound: "Không phải chuyến bay khứ hồi !!"
+    not_found: "Không tìm thấy vé!!"
   booking_mailer:
     one_way_payment_confirmation:
       subject: "Thông tin thanh toán"
@@ -58,6 +59,16 @@ vi:
       departure: "khởi hành tại"
       date: "vào lúc"
       delay: "phải bị huỷ."
+      sorry: "Chúng tôi rất xin lỗi vì sự bất tiện này và sẽ liên lạc với bạn sớm nhất có thể."
+    cancellation:
+      subject: "Thông báo cập nhật chuyến bay"
+      title: "Thông báo cập nhật chuyến bay"
+      header: "Chào quý khách thân mến"
+      first_line: "Chúng tôi đã đang kiểm tra lại lịch trình và vận hành các chuyến bay và phải thông báo rằng chuyến bay trên máy bay mang số hiệu"
+      plane: ""
+      departure: "khởi hành tại"
+      date: "vào lúc"
+      delay: "đã được cập nhật thông tin."
       sorry: "Chúng tôi rất xin lỗi vì sự bất tiện này và sẽ liên lạc với bạn sớm nhất có thể."
   customers:
     invalid_token: "Token không tồn tại"

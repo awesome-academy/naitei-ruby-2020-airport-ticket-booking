@@ -1,17 +1,10 @@
-#formRow {
+.filterRow {
   margin: 0;
+  margin-left: 0.2em;
 
   label {
     display: inline-flex;
     align-items: center;
     margin: 0;
   }
-}
-
-#formCol {
-  padding-right: 0;
-}
-
-#filter {
-  padding: 0;
 }
