@@ -16,7 +16,7 @@ const initialState = {
   isLoading: false,
 };
 
-const bookingReducer = (state = initialState, { type, payload }) => {
+const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOG_IN_SUCCESS:
       return { ...state, error: '', token: payload };
@@ -39,4 +39,4 @@ const bookingReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default bookingReducer;
+export default authReducer;

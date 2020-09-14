@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "status": "Undepart"
+  },
+  {
+    "id": "2",
+    "status": "Flying"
+  },
+  {
+    "id": "3",
+    "status": "Arrived"
+  },
+  {
+    "id": "4",
+    "status": "Cancelled"
+  }
+]

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         get "/info", to: "authentication#show"
         resources :flights, except: %i(new edit show)
         resources :planes, only: %i(index show)
+        resources :bookings, only: %i(index update)
       end
     end
   end

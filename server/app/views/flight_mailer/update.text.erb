@@ -1,0 +1,9 @@
+<<%= t ".title" %>
+
+<<%= t ".header" %>
+
+<%= t ".first_line" %><%= @flight.plane_name %> <%= t ".plane" %>,
+<%= t ".departure" %><%= @flight.flight_route.departure.location_name %>,
+<%= t ".date" %><%= @flight.shift.departure_time %>:00-<%= @flight.departure_day.strftime("%d-%m-%Y") %> <%= t ".delay" %>
+
+<%= t ".sorry" %>0

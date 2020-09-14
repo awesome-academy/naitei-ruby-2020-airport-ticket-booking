@@ -186,5 +186,38 @@
     "from": "Từ",
     "to": "Đến",
     "all": "Tất cả"
+  },
+  "manageFlights": {
+    "title": "Quản lý chuyến bay",
+    "departureDay": "Ngày khởi hành",
+    "planeName": "Tên máy bay",
+    "totalSeats": "Tổng số ghế",
+    "reservedSeats": "Ghế đã đặt",
+    "fromTo": "Từ / đến",
+    "from": "Từ",
+    "to": "Đến",
+    "departureTime": "Giờ khởi hành",
+    "status": "Trạng thái",
+    "previous": "Trang trước",
+    "next": "Trang sau",
+    "editFlight": "Sửa thông tin chuyến bay",
+    "addFlight": "Thêm chuyến bay",
+    "areYouSure": "Bạn chắc chứ?",
+    "cancelFlight": "Hủy chuyến bay",
+    "cancel": "Hủy bỏ",
+    "chooseTime": "Chọn thời gian",
+    "chooseDestination": "Chọn địa điểm",
+    "choosePlane": "Chọn máy bay"
+  },
+  "manageBookings": {
+    "title": "Quản lý đặt vé"
+  },
+  "staffPage": {
+    "manageBookings": "Quản lý đặt vé",
+    "manageFlights": "Quản lý chuyến bay"
+  },
+  "staffLogIn": {
+    "title": "Nhân viên đăng nhập",
+    "logIn": "Đăng nhập"
   }
 }

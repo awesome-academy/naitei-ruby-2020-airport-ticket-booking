@@ -15,3 +15,8 @@ export const CLEAR_ERROR_MESSAGE = 'CLEAR_ERROR_MESSAGE';
 export const SIGN_OUT = 'SIGN_OUT';
 export const LOADING_USER = 'LOADING_USER';
 export const GET_INFO = 'GET_INFO';
+
+export const STAFF_LOG_IN_SUCCESS = 'STAFF_LOG_IN_SUCCESS';
+export const STAFF_LOG_IN_ERROR = 'STAFF_LOG_IN_ERROR';
+export const STAFF_GET_INFO = 'STAFF_GET_INFO';
+export const STAFF_SIGN_OUT = 'STAFF_SIGN_OUT';

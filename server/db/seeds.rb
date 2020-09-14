@@ -130,6 +130,8 @@ FlightStatus.create(name: "Flying")
 
 FlightStatus.create(name: "Arrived")
 
+FlightStatus.create(name: "Cancelled")
+
 def rand_seat_reserved plane_id
   max_seat = Plane.find(plane_id).plane_type.normal_seat_number
   case max_seat
@@ -149,20 +151,30 @@ def rand_seat_reserved plane_id
 end
 
 1000.times do
-  departure_time = rand(3.months).seconds.from_now
+  departure_time = rand(3.months).seconds.since(1.days.ago)
   departure_day = Date.parse(departure_time.to_s)
   plane_id = rand(1..100)
   normal_reserved_seat = rand_seat_reserved(plane_id)
   business_reserved_seat = rand_seat_reserved(plane_id)
   flight_route_id = rand(1..6)
   shift_id = rand(1..3)
-
+  flight_status_id = 1
+  if departure_time.to_date === Time.now.to_date
+    if departure_time < Time.now 
+      shift_id = 1
+      flight_status_id = 2
+    else
+      shift_id = rand(2..3)
+    end
+  elsif departure_time < Time.now
+    flight_status_id = 3
+  end
   Flight.create!(departure_day: departure_day,
     plane_id: plane_id,
     normal_reserved_seat: normal_reserved_seat,
     business_reserved_seat: business_reserved_seat,
     shift_id: shift_id,
-    flight_status_id: 1,
+    flight_status_id: flight_status_id,
     flight_route_id: flight_route_id)
 end
 
@@ -184,6 +196,8 @@ SeatType.create(name: "Business Seat",
 BookingStatus.create(name: "Pending")
 
 BookingStatus.create(name: "Success")
+
+BookingStatus.create(name: "Cancelled")
 
 def rand_booking_customer
   booking_customer = rand(1..2)

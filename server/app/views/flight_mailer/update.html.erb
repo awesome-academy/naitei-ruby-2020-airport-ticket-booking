@@ -1,0 +1,10 @@
+<h1><%= t ".title" %></h1>
+
+<h3><%= t ".header" %></h3>
+
+<p><%= t ".first_line" %><%= @flight.plane_name %> <%= t ".plane" %>,
+<%= t ".departure" %><%= @flight.flight_route.departure.location_name %>,
+<%= t ".date" %><%= @flight.shift.departure_time %>:00-<%= @flight.departure_day.strftime("%d-%m-%Y") %> <%= t ".delay" %>
+</p>
+
+<p><%= t ".sorry" %></p>

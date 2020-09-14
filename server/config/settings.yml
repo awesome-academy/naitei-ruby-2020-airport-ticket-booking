@@ -21,6 +21,10 @@ time:
   future: 1
 payment_methods:
   cash: "Cash"
+flight_status:
+  cancelled: 4
+booking_status:
+  cancelled: 3
 validations:
   user:
     min_age: 10
@@ -38,3 +42,5 @@ test:
   default_password: "123456"
   default_phone: "0977860499"
   default_seat_number: 70
+pagination:
+  per_page: 20

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "from": "Ha Noi",
+    "to": "Ho Chi Minh"
+  },
+  {
+    "id": "2",
+    "from": "Ho Chi Minh",
+    "to": "Ha Noi"
+  },
+  {
+    "id": "3",
+    "from": "Ho Chi Minh",
+    "to": "Da Nang"
+  },
+  {
+    "id": "4",
+    "from": "Da Nang",
+    "to": "Ho Chi Minh"
+  },
+  {
+    "id": "5",
+    "from": "Ha Noi",
+    "to": "Da Nang"
+  },
+  {
+    "id": "6",
+    "from": "Da Nang",
+    "to": "Ha Noi"
+  }
+]
